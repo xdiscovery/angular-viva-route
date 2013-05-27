@@ -1,0 +1,35 @@
+﻿<div class="maps view">
+    <div class="container">
+        <header>
+            <h3>Maps</h3>
+        </header>
+        <div class="row">
+            <div class="span3">
+                Title:
+                <br />
+                <input data-ng-model="newMap.title" type="text" placeholder="First Name">
+            </div>
+            <div class="span3">
+                About:
+                <br />
+                <input data-ng-model="newMap.about" type="text" placeholder="Last Name">
+                <button id="submitMap" class="btn btn-primary" type="button" 
+                    data-ng-disabled="!newMap.title || !newMap.about" 
+                    data-ng-click="insertMap()">Add Map</button>
+            </div>
+        </div>
+        <br /><br />
+        <div>
+            <div class="row cardContainer">
+                <div class="span3 card" data-ng-repeat="map in maps | orderBy:'title'">
+                    <button class="btn close cardClose" data-ng-click="deleteMap(map.id)">&times;</button>
+                    <div class="cardHeader">About {{map.title}}</div>
+                    <div>{{map.about}}</div>
+                    <div>{{map.author[0].firstName}}</div>
+                    <a href="#/mapsorders/{{map.id}}" class="cardBody btn-link">View {{ map.orders.length }} Orders</a>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
